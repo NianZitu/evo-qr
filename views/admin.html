@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel · Evolution QR</title>
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <h1>Evolution QR</h1>
+      <button id="logout" type="button" class="ghost">Sair</button>
+    </header>
+
+    <section class="card">
+      <h2>Novo link</h2>
+      <form id="form" class="grid">
+        <label>Instância
+          <input id="instance" list="instances" required maxlength="255" autocomplete="off" placeholder="Nome na Evolution">
+          <datalist id="instances"></datalist>
+        </label>
+        <label>Cliente (opcional)
+          <input id="label" maxlength="120" autocomplete="off" placeholder="Aparece na página do cliente">
+        </label>
+        <label>Validade
+          <select id="hours">
+            <option value="1">1 hora</option>
+            <option value="24" selected>24 horas</option>
+            <option value="72">3 dias</option>
+            <option value="168">7 dias</option>
+          </select>
+        </label>
+        <button type="submit">Gerar link</button>
+      </form>
+      <p id="error" class="error" role="alert" hidden></p>
+      <div id="created" class="created" hidden>
+        <input id="created-url" readonly aria-label="Link gerado">
+        <button id="created-copy" type="button">Copiar</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Links</h2>
+      <p id="empty" class="muted" hidden>Nenhum link gerado ainda.</p>
+      <div class="table-wrap">
+        <table id="table" hidden>
+          <thead>
+            <tr><th>Cliente</th><th>Instância</th><th>Status</th><th>Expira em</th><th></th></tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+  <script src="/assets/admin.js" type="module"></script>
+</body>
+</html>

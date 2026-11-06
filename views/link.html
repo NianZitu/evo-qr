@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conectar WhatsApp</title>
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body class="center">
+  <main class="card connect">
+    <h1 id="title">Conectar WhatsApp</h1>
+    <p id="label" class="muted" hidden></p>
+
+    <section id="view-qr" hidden>
+      <div class="qr-frame"><img id="qr" alt="QR Code para conectar o WhatsApp"></div>
+      <p class="live"><span class="dot"></span>O código se atualiza sozinho. Mantenha esta página aberta.</p>
+      <ol class="steps">
+        <li>Abra o <strong>WhatsApp</strong> no celular</li>
+        <li>Toque em <strong>Mais opções</strong> (⋮) no Android ou <strong>Configurações</strong> no iPhone</li>
+        <li>Toque em <strong>Dispositivos conectados</strong> e depois em <strong>Conectar dispositivo</strong></li>
+        <li>Aponte a câmera para o código acima</li>
+      </ol>
+      <p class="hint">Abriu este link no mesmo celular do WhatsApp? Abra em um computador ou outro aparelho para conseguir escanear.</p>
+    </section>
+
+    <section id="view-message" hidden>
+      <div id="icon" class="icon"></div>
+      <p id="message"></p>
+      <button id="resume" type="button" hidden>Mostrar QR Code</button>
+    </section>
+  </main>
+  <script src="/assets/link.js" type="module"></script>
+</body>
+</html>
