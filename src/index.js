@@ -5,9 +5,15 @@ import { migrate } from './db.js';
 import { createEvolution } from './evolution.js';
 
 const config = loadConfig();
-const pool = new pg.Pool({ connectionString: config.databaseUrl, max: 10 });
+const pool = new pg.Pool({ connectionString: config.databaseUrl, max: 10, connectionTimeoutMillis: 10_000 });
 
-await migrate(pool);
+console.log('Conectando ao Postgres...');
+try {
+  await migrate(pool);
+} catch (error) {
+  console.error(`Não foi possível conectar ao Postgres. Confira DATABASE_URL. Erro: ${error.message}`);
+  process.exit(1);
+}
 
 const evolution = createEvolution({ url: config.evolutionUrl, apiKey: config.evolutionApiKey });
 const app = await buildApp({ config, pool, evolution });
